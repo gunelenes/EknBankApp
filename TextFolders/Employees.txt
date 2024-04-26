@@ -1,5 +1,2 @@
 NAME SURNAME E-MAIL PASSWORD
 ENES GUNEL EE@EE 1234
-Deneme veri
-Deneme veri
-Deneme veri

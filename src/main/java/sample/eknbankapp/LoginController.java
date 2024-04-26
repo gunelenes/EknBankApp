@@ -20,12 +20,22 @@ import java.util.ResourceBundle;
 import java.net.URL;
 public class LoginController implements Initializable {
 
+    public int loop;
     @FXML
     private Button cancelButton;
 
     public void cancelButtonOnAction(ActionEvent event) throws IOException {
-        Stage stage = (Stage) cancelButton.getScene().getWindow();
-        stage.close();
+
+      listForEmployee();
+
+
+
+
+
+
+
+       /* Stage stage = (Stage) cancelButton.getScene().getWindow();
+        stage.close();*/
 
 
 
@@ -52,12 +62,18 @@ public class LoginController implements Initializable {
 
 
     @FXML
-    private ImageView solMenuView;
+    private ImageView loginImageView;
+    @FXML
+    private ImageView lockImageView;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        File solMenuFile = new File("Image/bird-thumbnail.jpg");
-        Image solMenuImage = new Image(solMenuFile.toURI().toString());
-        solMenuView.setImage(solMenuImage);
+        File loginImageFile = new File("Image/eknBankLoginImage.jpg");
+        Image loginImage = new Image(loginImageFile.toURI().toString());
+        loginImageView.setImage(loginImage);
+
+        File lockImageFile = new File("Image/lockLoginImage.jpg");
+        Image lockImage = new Image(lockImageFile.toURI().toString());
+        lockImageView.setImage(lockImage);
     }
 
     @FXML
@@ -68,7 +84,31 @@ public class LoginController implements Initializable {
     private PasswordField passwordTextField;
     public void loginButtonOnAction(ActionEvent event) throws IOException {
 
-        employeeView();
+        //employeeView();
+
+        String username = usernameTextField.getText();
+        String password = passwordTextField.getText();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         //txt dosyasında yeni satıra kod yazma
         /*
         File file = new File("TextFolders/Employees.txt");
@@ -85,11 +125,13 @@ public class LoginController implements Initializable {
 
         bWriter.close();
 */
+
+        /*
         if(usernameTextField.getText().isBlank() == false && passwordTextField.getText().isBlank() == false){
             validateLogin();
         }else{
             loginMessageLabel.setText("Please enter username and password");
-        }
+        }*/
     }
     public void validateLogin(){}
 
@@ -105,5 +147,24 @@ public class LoginController implements Initializable {
             e.printStackTrace();
             e.getCause();
         }
+    }
+
+    public void listForEmployee () throws IOException {
+        File file = new File("TextFolders/Employees.txt");
+       /* if (!file.exists()) {
+            loginMessageLabel.setText("File does not exist");
+        }*/
+
+        FileReader fReader = new FileReader(file);
+        String line;
+        loop = 0;
+        //Dosyada gezinme komutu
+        BufferedReader bReader = new BufferedReader(fReader);
+        while ((line = bReader.readLine()) != null) {
+           loop++;
+        }
+        bReader.close();
+
+
     }
 }
