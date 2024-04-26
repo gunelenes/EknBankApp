@@ -9,28 +9,27 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.eknbankapp.LoginController">
    <left>
       <AnchorPane prefHeight="407.0" prefWidth="228.0" BorderPane.alignment="CENTER">
          <children>
-             <ImageView fitHeight="407.0" fitWidth="228.0" layoutX="4.0" pickOnBounds="true" preserveRatio="true">
-                 <Image url="@../../../../../Image/bird-thumbnail.jpg"/>
+             <ImageView fx:id="solMenuView" fitHeight="407.0" fitWidth="228.0" layoutX="4.0" pickOnBounds="true" preserveRatio="true">
+                 <Image url="@../../../../../Image/bird-thumbnail.jpg" />
              </ImageView>
          </children>
       </AnchorPane>
    </left>
-   <right>
+   <center>
       <AnchorPane prefHeight="400.0" prefWidth="332.0" style="-fx-background-color: #ECECE7;" BorderPane.alignment="CENTER">
          <children>
             <Label layoutX="31.0" layoutY="163.0" text="Username" />
             <TextField fx:id="usernameTextField" layoutX="93.0" layoutY="159.0" promptText="Username" />
             <Label layoutX="31.0" layoutY="200.0" text="Password" />
             <PasswordField fx:id="passwordTextField" layoutX="93.0" layoutY="196.0" promptText="Password" />
-            <Button fx:id="loginButton" layoutX="118.0" layoutY="268.0" mnemonicParsing="false" text="Login" />
-            <Button fx:id="cancelButton" layoutX="118.0" layoutY="308.0" mnemonicParsing="false" text="Cancel" />
-            <Label alignment="CENTER" layoutX="69.0" layoutY="229.0" text="Invalid login. Please ty again" />
+            <Button fx:id="loginButton" layoutX="118.0" layoutY="268.0" mnemonicParsing="false" onAction="#loginButtonOnAction" text="Login" />
+            <Button fx:id="cancelButton" layoutX="118.0" layoutY="308.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" text="Cancel" />
+            <Label fx:id="loginMessageLabel" alignment="CENTER" layoutX="69.0" layoutY="229.0" textFill="RED" />
          </children>
       </AnchorPane>
-   </right>
+   </center>
 </BorderPane>
