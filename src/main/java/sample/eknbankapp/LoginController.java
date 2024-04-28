@@ -10,6 +10,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
@@ -123,6 +125,11 @@ public class LoginController implements Initializable {
 
 
     public String fullName; // fullName değişkeni
+    public String firstName;
+    public String lastName;
+    public String eMail;
+    public String password;
+    public String identityNumber;
 
     public void validateLogin() throws IOException{
 
@@ -133,6 +140,11 @@ public class LoginController implements Initializable {
             // Örneğin, çalışan bilgilerini yazdıralım:
             if(employees[loop][2].equals(usernameTextField.getText()) && employees[loop][3].equals(passwordTextField.getText())){
                 fullName=employees[loop][0]+" "+" "+employees[loop][1];
+                firstName = employees[loop][0];
+                lastName = employees[loop][1];
+                eMail = employees[loop][2];
+                password = employees[loop][3];
+                identityNumber = employees[loop][4];
                 employeeView();
                 Stage stage = (Stage) cancelButton.getScene().getWindow();
                 stage.close();
@@ -147,7 +159,10 @@ public class LoginController implements Initializable {
             // Her bir çalışanın bilgilerini işleyin
             // Örneğin, çalışan bilgilerini yazdıralım:
             if(adminInformation[loop][2].equals(usernameTextField.getText()) && adminInformation[loop][3].equals(passwordTextField.getText())){
-                 fullName=adminInformation[loop][0]+" "+" "+adminInformation[loop][1];
+                fullName=adminInformation[loop][0]+" "+" "+adminInformation[loop][1];
+                eMail = adminInformation[loop][2];
+                password = adminInformation[loop][3];
+                identityNumber = adminInformation[loop][4];
                 adminView();
                 Stage stage = (Stage) cancelButton.getScene().getWindow();
                 stage.close();
@@ -167,7 +182,11 @@ public class LoginController implements Initializable {
             Parent root = loader.load();
             EmployeeController controller = loader.getController();
             controller.setFullName(fullName);
-
+            controller.setFirstName(firstName);
+            controller.setLastName(lastName);
+            controller.setIdentityNumber(identityNumber);
+            controller.setPassword(password);
+            controller.setEmail(eMail);
 
 
             Stage employeeViewStage = new Stage();
@@ -190,6 +209,9 @@ public class LoginController implements Initializable {
             Parent root = loader.load();
             AdminController controller = loader.getController();
             controller.setFullName(fullName);
+         /*   controller.setIdentityNumber(identityNumber);
+            controller.setPassword(password);
+            controller.serEmail(eMail);*/
 
 
 
@@ -216,7 +238,7 @@ public class LoginController implements Initializable {
         }
 
 
-        String[][] employees = new String[loop][4];
+        String[][] employees = new String[loop][5];
         loop = 0;
         int loopForValue =0;
         fReader = new FileReader(file);
@@ -263,6 +285,8 @@ public class LoginController implements Initializable {
         bReader.close();
         return adminInformation;
     }
+
+
 
 
 }
