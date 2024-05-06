@@ -8,7 +8,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.Pane?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.eknbankapp.CustomerSettingController">
     <left>
@@ -37,22 +36,19 @@
             </children>
         </AnchorPane>
     </top>
-    <center>
-        <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView layoutX="22.0" layoutY="14.0" prefHeight="411.0" prefWidth="545.0">
+            <TableView fx:id="customerTableView" layoutX="115.0" layoutY="57.0" onSort="#listCustomer" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <columns>
-                <TableColumn prefWidth="100.0" text="C1" />
-                <TableColumn prefWidth="116.0" text="C2" />
-                  <TableColumn prefWidth="186.0" text="Column X">
-                     <columns>
-                        <TableColumn prefWidth="75.0" text="Column X" />
-                        <TableColumn prefWidth="75.0" text="Column X" />
-                        <TableColumn prefWidth="75.0" text="Column X" />
-                     </columns>
-                  </TableColumn>
+                <TableColumn fx:id="customerFirsNameColumn" prefWidth="75.0" text="First Name" />
+                <TableColumn fx:id="customerLastNameColumn" prefWidth="75.0" text="Last Name" />
+                  <TableColumn fx:id="customerIdentityNumberColumn" prefWidth="75.0" text="Column X" />
+                  <TableColumn fx:id="customerEmailColumn" prefWidth="75.0" text="Column X" />
+                  <TableColumn fx:id="customerPasswordColumn" prefWidth="75.0" text="Column X" />
               </columns>
             </TableView>
-         </children></Pane>
-    </center>
+         </children>
+      </AnchorPane>
+   </center>
 </BorderPane>
