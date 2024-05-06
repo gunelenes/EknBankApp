@@ -19,7 +19,7 @@
                     </image>
                 </ImageView>
                 <Button layoutX="5.0" layoutY="187.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="203.0" style="-fx-background-color: #25909f;" text="Exchange" textFill="WHITE" />
-                <Button fx:id="cryptoButton" layoutX="5.0" layoutY="233.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="203.0" style="-fx-background-color: #25909f;" text="Crypto" textFill="WHITE" />
+                <Button fx:id="cryptoButton" layoutX="5.0" layoutY="233.0" mnemonicParsing="false" onAction="#cryptoButtonOnAction" prefHeight="40.0" prefWidth="203.0" style="-fx-background-color: #25909f;" text="Crypto" textFill="WHITE" />
                 <Button layoutX="5.0" layoutY="279.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="203.0" style="-fx-background-color: #25909f;" text="Financial Situation" textFill="WHITE" />
                 <Button layoutX="5.0" layoutY="325.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="203.0" style="-fx-background-color: #25909f;" text="My Information" textFill="WHITE" />
             <Button fx:id="customersButton" layoutX="5.0" layoutY="142.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="203.0" style="-fx-background-color: #25909f;" text="Customers" textFill="WHITE" />
@@ -46,9 +46,10 @@
             <Label layoutX="100.0" layoutY="308.0" text="Password" />
             <TextField fx:id="employeeLastnameTextField" layoutX="99.0" layoutY="149.0" prefHeight="25.0" prefWidth="408.0" />
             <TextField fx:id="employeeEmailTextField" layoutX="99.0" layoutY="211.0" prefHeight="25.0" prefWidth="408.0" />
-            <TextField fx:id="employeeIdentityNumberTextField" layoutX="99.0" layoutY="273.0" prefHeight="25.0" prefWidth="408.0" />
-            <Button fx:id="employeeInformationRegisterButton" layoutX="100.0" layoutY="379.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="408.0" style="-fx-background-color: #25909f;" text="Register" textFill="WHITE" />
+            <TextField fx:id="employeeIdentityNumberTextField" disable="true" editable="false" layoutX="99.0" layoutY="273.0" prefHeight="25.0" prefWidth="408.0" />
+            <Button fx:id="employeeInformationRegisterButton" layoutX="100.0" layoutY="379.0" mnemonicParsing="false" onAction="#employeeInformationRegisterButtonOnAction" prefHeight="25.0" prefWidth="408.0" style="-fx-background-color: #25909f;" text="Register" textFill="WHITE" />
             <TextField fx:id="employeePasswordTextField" layoutX="101.0" layoutY="332.0" prefHeight="25.0" prefWidth="408.0" />
+            <Label fx:id="registerMessageLabel" layoutX="102.0" layoutY="357.0" textFill="#23ae07" />
          </children>
       </Pane>
    </center>

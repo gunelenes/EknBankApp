@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.eknbankapp.CustomerSettingController">
+    <left>
+        <AnchorPane prefHeight="507.0" prefWidth="212.0" style="-fx-background-color: #effdff;" BorderPane.alignment="CENTER">
+            <children>
+                <ImageView fx:id="logoImageView" fitHeight="150.0" fitWidth="200.0" layoutX="32.0" layoutY="-41.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../../../Image/logoImage.jpg" />
+                    </image>
+                </ImageView>
+                <Button layoutX="4.0" layoutY="121.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="203.0" style="-fx-background-color: #25909f;" text="Customer Setting" textFill="WHITE" />
+                <Button layoutX="5.0" layoutY="167.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="203.0" style="-fx-background-color: #25909f;" text="Employee Setting" textFill="WHITE" />
+                <Button layoutX="5.0" layoutY="213.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="203.0" style="-fx-background-color: #25909f;" text="Exchange" textFill="WHITE" />
+                <Button fx:id="cryptoButton" layoutX="5.0" layoutY="259.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="203.0" style="-fx-background-color: #25909f;" text="Crypto" textFill="WHITE" />
+                <Button layoutX="5.0" layoutY="305.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="203.0" style="-fx-background-color: #25909f;" text="Financial Situation" textFill="WHITE" />
+                <Button layoutX="5.0" layoutY="351.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="203.0" style="-fx-background-color: #25909f;" text="Personal Information" textFill="WHITE" />
+                <Button layoutX="5.0" layoutY="397.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="203.0" style="-fx-background-color: #25909f;" text="My Information" textFill="WHITE" />
+            </children>
+        </AnchorPane>
+    </left>
+    <top>
+        <AnchorPane prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #effdff;" BorderPane.alignment="CENTER">
+            <children>
+                <Button fx:id="exitButton" layoutX="719.0" layoutY="10.0" mnemonicParsing="false" onAction="#exitButtonOnAction" prefHeight="31.0" prefWidth="67.0" style="-fx-background-color: #25909f;" text="Exit" textFill="WHITE" />
+                <Label fx:id="adminNameLabel" layoutX="233.0" layoutY="17.0" text=" Name Surname" />
+            </children>
+        </AnchorPane>
+    </top>
+    <center>
+        <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <TableView layoutX="22.0" layoutY="14.0" prefHeight="411.0" prefWidth="545.0">
+              <columns>
+                <TableColumn prefWidth="100.0" text="C1" />
+                <TableColumn prefWidth="116.0" text="C2" />
+                  <TableColumn prefWidth="186.0" text="Column X">
+                     <columns>
+                        <TableColumn prefWidth="75.0" text="Column X" />
+                        <TableColumn prefWidth="75.0" text="Column X" />
+                        <TableColumn prefWidth="75.0" text="Column X" />
+                     </columns>
+                  </TableColumn>
+              </columns>
+            </TableView>
+         </children></Pane>
+    </center>
+</BorderPane>

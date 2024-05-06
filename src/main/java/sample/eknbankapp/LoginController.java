@@ -133,22 +133,22 @@ public class LoginController implements Initializable {
 
     public void validateLogin() throws IOException{
 
-        String[][] employees = getEmployees();
+        String[][] employeesInformation = getEmployees();
         loop = 0;
-        for (int i = 0; i < employees.length; i++) {
+        for (int i = 0; i < employeesInformation.length; i++) {
             // Her bir çalışanın bilgilerini işleyin
             // Örneğin, çalışan bilgilerini yazdıralım:
-            if(employees[loop][2].equals(usernameTextField.getText()) && employees[loop][3].equals(passwordTextField.getText())){
-                fullName=employees[loop][0]+" "+" "+employees[loop][1];
-                firstName = employees[loop][0];
-                lastName = employees[loop][1];
-                eMail = employees[loop][2];
-                password = employees[loop][3];
-                identityNumber = employees[loop][4];
+            if(employeesInformation[loop][2].equals(usernameTextField.getText()) && employeesInformation[loop][3].equals(passwordTextField.getText())){
+                fullName=employeesInformation[loop][0]+" "+" "+employeesInformation[loop][1];
+                firstName = employeesInformation[loop][0];
+                lastName = employeesInformation[loop][1];
+                eMail = employeesInformation[loop][2];
+                password = employeesInformation[loop][3];
+                identityNumber = employeesInformation[loop][4];
                 employeeView();
                 Stage stage = (Stage) cancelButton.getScene().getWindow();
                 stage.close();
-                return;
+                break;
             }
             loop++;
         }
@@ -160,13 +160,15 @@ public class LoginController implements Initializable {
             // Örneğin, çalışan bilgilerini yazdıralım:
             if(adminInformation[loop][2].equals(usernameTextField.getText()) && adminInformation[loop][3].equals(passwordTextField.getText())){
                 fullName=adminInformation[loop][0]+" "+" "+adminInformation[loop][1];
+                firstName = adminInformation[loop][0];
+                lastName = adminInformation[loop][1];
                 eMail = adminInformation[loop][2];
                 password = adminInformation[loop][3];
                 identityNumber = adminInformation[loop][4];
                 adminView();
                 Stage stage = (Stage) cancelButton.getScene().getWindow();
                 stage.close();
-                return;
+                break;
             }
             loop++;
         }
@@ -238,7 +240,7 @@ public class LoginController implements Initializable {
         }
 
 
-        String[][] employees = new String[loop][5];
+        String[][] employeesInformation = new String[loop][5];
         loop = 0;
         int loopForValue =0;
         fReader = new FileReader(file);
@@ -246,14 +248,14 @@ public class LoginController implements Initializable {
         while ((line = bReader.readLine()) != null) {
             String[] employee = line.split(" ");
             for (String a : employee){
-                employees[loop][loopForValue] = a;
+                employeesInformation[loop][loopForValue] = a;
                 loopForValue++;
             }
             loop++;
             loopForValue =0;
         }
         bReader.close();
-        return employees;
+        return employeesInformation;
     }
 
     public String[][] getAdminInformation () throws IOException {
@@ -268,7 +270,7 @@ public class LoginController implements Initializable {
         }
 
 
-        String[][] adminInformation = new String[loop][4];
+        String[][] adminInformation = new String[loop][5];
         loop = 0;
         int loopForValue =0;
         fReader = new FileReader(file);
@@ -287,6 +289,7 @@ public class LoginController implements Initializable {
     }
 
 
-
-
+    public int loop() {
+        return loop;
+    }
 }
