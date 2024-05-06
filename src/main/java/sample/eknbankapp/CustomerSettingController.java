@@ -4,7 +4,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -12,6 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -124,5 +128,26 @@ public class CustomerSettingController implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+
+    public void settingForCustomerView(){
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("SettingForCustomerView.fxml"));
+            Parent root = loader.load();
+            Stage settingForCustomerViewStage = new Stage();
+            settingForCustomerViewStage.initStyle(StageStyle.UNDECORATED);
+            settingForCustomerViewStage.setScene(new Scene(root,800,500));
+            settingForCustomerViewStage.show();
+        }catch (Exception e){
+            e.printStackTrace();
+            e.getCause();
+        }
+    }
+
+    public void settingForCustomerButtonOnAction(ActionEvent event) throws IOException {
+        settingForCustomerView();
+        Stage stage = (Stage) exitButton.getScene().getWindow();
+        stage.close();
     }
 }

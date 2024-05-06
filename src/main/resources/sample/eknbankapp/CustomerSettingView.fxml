@@ -39,15 +39,17 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView fx:id="customerTableView" layoutX="115.0" layoutY="57.0" onSort="#listCustomer" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <TableView fx:id="customerTableView" layoutX="115.0" layoutY="57.0" prefHeight="394.0" prefWidth="588.0" AnchorPane.bottomAnchor="56.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <columns>
-                <TableColumn fx:id="customerFirsNameColumn" prefWidth="75.0" text="First Name" />
-                <TableColumn fx:id="customerLastNameColumn" prefWidth="75.0" text="Last Name" />
-                  <TableColumn fx:id="customerIdentityNumberColumn" prefWidth="75.0" text="Column X" />
-                  <TableColumn fx:id="customerEmailColumn" prefWidth="75.0" text="Column X" />
-                  <TableColumn fx:id="customerPasswordColumn" prefWidth="75.0" text="Column X" />
+                <TableColumn fx:id="customerFirsNameColumn" prefWidth="118.0" text="First Name" />
+                <TableColumn fx:id="customerLastNameColumn" prefWidth="118.0" text="Last Name" />
+                  <TableColumn fx:id="customerIdentityNumberColumn" prefWidth="118.0" text="Identitiy Number" />
+                  <TableColumn fx:id="customerEmailColumn" prefWidth="118.0" text="E-Mail" />
+                  <TableColumn fx:id="customerPasswordColumn" prefWidth="118.0" text="Password" />
               </columns>
             </TableView>
+            <Button fx:id="settingForCustomerButton" layoutX="76.0" layoutY="396.0" mnemonicParsing="false" onAction="#settingForCustomerButtonOnAction" prefHeight="40.0" prefWidth="203.0" style="-fx-background-color: #25909f;" text="Setting" textFill="WHITE" />
+            <Button layoutX="309.0" layoutY="396.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="203.0" style="-fx-background-color: #25909f;" text="Exchange" textFill="WHITE" />
          </children>
       </AnchorPane>
    </center>
