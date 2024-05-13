@@ -38,6 +38,7 @@ public class Customer {
         return password;
     }
 
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
@@ -57,6 +58,7 @@ public class Customer {
     public void setPassword(String password) {
         this.password = password;
     }
+
 /*
     @FXML
     ObservableList<Customer> list = FXCollections.observableArrayList();*/

@@ -144,10 +144,34 @@ public class CustomerSettingController implements Initializable {
             e.getCause();
         }
     }
-
+    @FXML
+    private Button settingForCustomerButton;
     public void settingForCustomerButtonOnAction(ActionEvent event) throws IOException {
         settingForCustomerView();
-        Stage stage = (Stage) exitButton.getScene().getWindow();
+        Stage stage = (Stage) settingForCustomerButton.getScene().getWindow();
         stage.close();
     }
+
+    public void signUpCustomerView(){
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("CreateCustomerView.fxml"));
+            Parent root = loader.load();
+            Stage settingForCustomerViewStage = new Stage();
+            settingForCustomerViewStage.initStyle(StageStyle.UNDECORATED);
+            settingForCustomerViewStage.setScene(new Scene(root,800,500));
+            settingForCustomerViewStage.show();
+        }catch (Exception e){
+            e.printStackTrace();
+            e.getCause();
+        }
+    }
+    @FXML
+    private Button signUpCustomerButton;
+    public void signUpCustomerButtonOnAction(ActionEvent event) throws IOException {
+        signUpCustomerView();
+        Stage stage = (Stage) signUpCustomerButton.getScene().getWindow();
+        stage.close();
+    }
+
+
 }

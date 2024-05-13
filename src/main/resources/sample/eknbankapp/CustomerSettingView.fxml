@@ -49,7 +49,7 @@
               </columns>
             </TableView>
             <Button fx:id="settingForCustomerButton" layoutX="76.0" layoutY="396.0" mnemonicParsing="false" onAction="#settingForCustomerButtonOnAction" prefHeight="40.0" prefWidth="203.0" style="-fx-background-color: #25909f;" text="Setting" textFill="WHITE" />
-            <Button layoutX="309.0" layoutY="396.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="203.0" style="-fx-background-color: #25909f;" text="Exchange" textFill="WHITE" />
+            <Button fx:id="signUpCustomerButton" layoutX="309.0" layoutY="396.0" mnemonicParsing="false" onAction="#signUpCustomerButtonOnAction" prefHeight="40.0" prefWidth="203.0" style="-fx-background-color: #25909f;" text="Sign Up" textFill="WHITE" />
          </children>
       </AnchorPane>
    </center>
