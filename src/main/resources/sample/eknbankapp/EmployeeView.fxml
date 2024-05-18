@@ -18,11 +18,13 @@
                         <Image url="@../../../../../Image/logoImage.jpg" />
                     </image>
                 </ImageView>
-                <Button layoutX="5.0" layoutY="187.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="203.0" style="-fx-background-color: #25909f;" text="Exchange" textFill="WHITE" />
-                <Button fx:id="cryptoButton" layoutX="5.0" layoutY="233.0" mnemonicParsing="false" onAction="#cryptoButtonOnAction" prefHeight="40.0" prefWidth="203.0" style="-fx-background-color: #25909f;" text="Crypto" textFill="WHITE" />
-                <Button layoutX="5.0" layoutY="279.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="203.0" style="-fx-background-color: #25909f;" text="Financial Situation" textFill="WHITE" />
-                <Button layoutX="5.0" layoutY="325.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="203.0" style="-fx-background-color: #25909f;" text="My Information" textFill="WHITE" />
-            <Button fx:id="customersButton" layoutX="5.0" layoutY="142.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="203.0" style="-fx-background-color: #25909f;" text="Customers" textFill="WHITE" />
+                <Button fx:id="employeeCustomersButton" layoutX="4.0" layoutY="145.0" mnemonicParsing="false" onAction="#employeeCustomersViewButtonOnAction" prefHeight="40.0" prefWidth="203.0" style="-fx-background-color: #25909f;" text="Customers" textFill="WHITE" />
+                <Button fx:id="cryptoButton" layoutX="5.0" layoutY="191.0" mnemonicParsing="false" onAction="#cryptoButtonOnAction" prefHeight="40.0" prefWidth="203.0" style="-fx-background-color: #25909f;" text="Crypto" textFill="WHITE" />
+                <Button fx:id="employeeViewFinancialSituationButton" layoutX="5.0" layoutY="237.0" mnemonicParsing="false" onAction="#financialSituationButtonOnAction" prefHeight="40.0" prefWidth="203.0" style="-fx-background-color: #25909f;" text="Financial Situation" textFill="WHITE" />
+                <Button fx:id="adminInformationButton" layoutX="5.0" layoutY="283.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="203.0" style="-fx-background-color: #25909f;" text="My Information" textFill="WHITE" />
+                <Label layoutX="30.0" layoutY="353.0" text="ph : +90 (000) 000-000000" />
+                <Label layoutX="38.0" layoutY="370.0" text="e : support@eknBank.com" />
+                <Label layoutX="34.0" layoutY="388.0" text="w : eknbank.com" />
             </children>
         </AnchorPane>
     </left>
@@ -30,7 +32,6 @@
         <AnchorPane prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #effdff;" BorderPane.alignment="CENTER">
             <children>
                 <Button fx:id="exitButton" layoutX="719.0" layoutY="10.0" mnemonicParsing="false" onAction="#exitButtonOnAction" prefHeight="31.0" prefWidth="67.0" style="-fx-background-color: #25909f;" text="Exit" textFill="WHITE" />
-                <Label fx:id="employeeNameLabel" layoutX="233.0" layoutY="17.0" text=" Name Surname" />
             </children>
         </AnchorPane>
     </top>
@@ -50,6 +51,7 @@
             <Button fx:id="employeeInformationRegisterButton" layoutX="100.0" layoutY="379.0" mnemonicParsing="false" onAction="#employeeInformationRegisterButtonOnAction" prefHeight="25.0" prefWidth="408.0" style="-fx-background-color: #25909f;" text="Register" textFill="WHITE" />
             <TextField fx:id="employeePasswordTextField" layoutX="101.0" layoutY="332.0" prefHeight="25.0" prefWidth="408.0" />
             <Label fx:id="registerMessageLabel" layoutX="102.0" layoutY="357.0" textFill="#23ae07" />
+            <Label fx:id="errorMessageLabel" layoutX="102.0" layoutY="357.0" textFill="RED" />
          </children>
       </Pane>
    </center>

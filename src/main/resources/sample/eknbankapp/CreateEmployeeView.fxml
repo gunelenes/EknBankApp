@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -10,7 +9,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.eknbankapp.CreateCustomerController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.eknbankapp.CreateEmployeeController">
     <left>
         <AnchorPane prefHeight="507.0" prefWidth="212.0" style="-fx-background-color: #effdff;" BorderPane.alignment="CENTER">
             <children>
@@ -23,7 +22,7 @@
                 <Button fx:id="employeeSettingButton" layoutX="5.0" layoutY="161.0" mnemonicParsing="false" onAction="#employeeSettingButtonOnAction" prefHeight="40.0" prefWidth="203.0" style="-fx-background-color: #25909f;" text="Employee Setting" textFill="WHITE" />
                 <Button fx:id="cryptoButton" layoutX="5.0" layoutY="207.0" mnemonicParsing="false" onAction="#cryptoButtonOnAction" prefHeight="40.0" prefWidth="203.0" style="-fx-background-color: #25909f;" text="Crypto" textFill="WHITE" />
                 <Button fx:id="financialSituationButton" layoutX="5.0" layoutY="253.0" mnemonicParsing="false" onAction="#financialSituationButtonOnAction" prefHeight="40.0" prefWidth="203.0" style="-fx-background-color: #25909f;" text="Financial Situation" textFill="WHITE" />
-                <Button fx:id="myInformationButton" layoutX="5.0" layoutY="300.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="203.0" style="-fx-background-color: #25909f;" text="My Information" textFill="WHITE" />
+                <Button layoutX="5.0" layoutY="300.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="203.0" style="-fx-background-color: #25909f;" text="My Information" textFill="WHITE" />
                 <Label layoutX="30.0" layoutY="353.0" text="ph : +90 (000) 000-000000" />
                 <Label layoutX="38.0" layoutY="370.0" text="e : support@eknBank.com" />
                 <Label layoutX="34.0" layoutY="388.0" text="w : eknbank.com" />
@@ -34,32 +33,30 @@
         <AnchorPane prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #effdff;" BorderPane.alignment="CENTER">
             <children>
                 <Button fx:id="exitButton" layoutX="719.0" layoutY="10.0" mnemonicParsing="false" onAction="#exitButtonOnAction" prefHeight="31.0" prefWidth="67.0" style="-fx-background-color: #25909f;" text="Exit" textFill="WHITE" />
+                <Label fx:id="adminNameLabel" layoutX="233.0" layoutY="17.0" text=" Name Surname" />
             </children>
         </AnchorPane>
     </top>
     <center>
         <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label layoutX="58.0" layoutY="37.0" text="First Name" />
-            <TextField fx:id="customerFirstNameTextField" layoutX="58.0" layoutY="61.0" />
-            <Label layoutX="58.0" layoutY="98.0" text="Last Name" />
-            <TextField fx:id="customerLastNameTextField" layoutX="58.0" layoutY="122.0" />
-            <Label layoutX="58.0" layoutY="157.0" text="Identity Number" />
-            <TextField fx:id="customerIdentityNumberTextField" layoutX="58.0" layoutY="181.0" />
-            <Label layoutX="58.0" layoutY="218.0" text="E-Mail" />
-            <TextField fx:id="customerEmailTextField" layoutX="58.0" layoutY="242.0" />
-            <Label layoutX="58.0" layoutY="280.0" text="Password" />
-            <TextField fx:id="customerPasswordTextField" layoutX="58.0" layoutY="304.0" />
-            <ComboBox fx:id="customerMentorComboBax" layoutX="366.0" layoutY="61.0" prefWidth="150.0" />
-            <Label layoutX="366.0" layoutY="37.0" text="Mentor" />
-            <Label layoutX="367.0" layoutY="109.0" text="Dolar ($)" />
-            <TextField fx:id="customerDolarTextField" layoutX="367.0" layoutY="133.0" />
-            <Label layoutX="367.0" layoutY="170.0" text="Euro ()" />
-            <TextField fx:id="customerEuroTextField" layoutX="367.0" layoutY="194.0" />
-            <Label layoutX="367.0" layoutY="229.0" text="Turkish Lira ()" />
-            <TextField fx:id="customerTurkishLiraTextField" layoutX="367.0" layoutY="253.0" />
-            <Button fx:id="customerSignUpButton" layoutX="142.0" layoutY="389.0" mnemonicParsing="false" onAction="#customerSignUpButtonOnAction" prefHeight="25.0" prefWidth="304.0" text="Sign Up" />
-            <Label fx:id="incorrectInformationLabel" layoutX="465.0" layoutY="392.0" textFill="RED" />
-         </children></Pane>
+            <children>
+                <Label layoutX="102.0" layoutY="46.0" text="Firstname" />
+                <TextField fx:id="employeeFirstNameTextField" layoutX="102.0" layoutY="69.0" prefHeight="25.0" prefWidth="408.0" />
+                <Label layoutX="102.0" layoutY="103.0" text="Lastname" />
+                <Label layoutX="102.0" layoutY="223.0" text="E-Mail" />
+                <Label layoutX="102.0" layoutY="163.0" text="Identity Number" />
+                <Label layoutX="101.0" layoutY="281.0" text="Password" />
+                <TextField fx:id="employeeLastNameTextField" layoutX="102.0" layoutY="127.0" prefHeight="25.0" prefWidth="408.0" />
+                <TextField fx:id="employeeEmailTextField" layoutX="102.0" layoutY="250.0" prefHeight="25.0" prefWidth="408.0" />
+                <TextField fx:id="employeeIdentityNumberTextField" layoutX="102.0" layoutY="190.0" prefHeight="25.0" prefWidth="408.0" />
+                <Button fx:id="employeeSignUpButton" layoutX="101.0" layoutY="352.0" mnemonicParsing="false" onAction="#employeeSignUpButtonOnAction" prefHeight="25.0" prefWidth="408.0" style="-fx-background-color: #25909f;" text="Sign Up" textFill="WHITE" />
+                <TextField fx:id="employeePasswordTextField" layoutX="102.0" layoutY="305.0" prefHeight="25.0" prefWidth="408.0" />
+                <Label fx:id="registerMessageLabel" layoutX="468.0" layoutY="413.0" textFill="#00ff09" />
+                <Label fx:id="errorMessageLabel" layoutX="415.0" layoutY="413.0" textFill="RED" />
+                <Label fx:id="notFoundLabel" layoutX="436.0" layoutY="126.0" textFill="RED" />
+                <Label fx:id="correctLabel" layoutX="468.0" layoutY="413.0" textFill="#00ff15" />
+                <Label fx:id="incorrectInformationLabel" layoutX="411.0" layoutY="413.0" textFill="RED" />
+            <Label fx:id="incorrectLabel" layoutX="422.0" layoutY="396.0" textFill="RED" />
+            </children></Pane>
     </center>
 </BorderPane>

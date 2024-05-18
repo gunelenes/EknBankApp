@@ -10,8 +10,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
@@ -22,33 +20,13 @@ import java.util.ResourceBundle;
 import java.net.URL;
 public class LoginController implements Initializable {
 
-    //public String fullName;
     public int loop;
     @FXML
     private Button cancelButton;
 
     public void cancelButtonOnAction(ActionEvent event) throws IOException {
-
         Stage stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
-
-
-       //txt dosyası içinde satır satır gezinme
-/*
-        File file = new File("TextFolders/Employees.txt");
-        if (!file.exists()) {
-            loginMessageLabel.setText("File does not exist");
-        }
-
-        FileReader fReader = new FileReader(file);
-        String line;
-
-        //Dosyada gezinme komutu
-        BufferedReader bReader = new BufferedReader(fReader);
-        while ((line = bReader.readLine()) != null) {
-            System.out.println(line);
-        }
-        bReader.close();*/
     }
 
 
@@ -75,51 +53,11 @@ public class LoginController implements Initializable {
     private PasswordField passwordTextField;
     public void loginButtonOnAction(ActionEvent event) throws IOException {
 
-
         if(usernameTextField.getText().isBlank() == false && passwordTextField.getText().isBlank() == false){
-            getEmployees();
             validateLogin();
         }else{
             loginMessageLabel.setText("Please enter username and password");
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //txt dosyasında yeni satıra kod yazma
-        /*
-        File file = new File("TextFolders/Employees.txt");
-        if (!file.exists()) {
-            loginMessageLabel.setText("File does not exist");
-        }
-
-        String value = "Deneme veri";
-
-        FileWriter fWriter = new FileWriter(file, true);
-        BufferedWriter bWriter = new BufferedWriter(fWriter);
-        bWriter.newLine();
-        bWriter.write(value);
-
-        bWriter.close();
-*/
-
 
     }
 
@@ -129,7 +67,7 @@ public class LoginController implements Initializable {
     public String lastName;
     public String eMail;
     public String password;
-    public String identityNumber;
+    private String identityNumber;
 
     public void validateLogin() throws IOException{
 
@@ -138,13 +76,12 @@ public class LoginController implements Initializable {
         for (int i = 0; i < employeesInformation.length; i++) {
             // Her bir çalışanın bilgilerini işleyin
             // Örneğin, çalışan bilgilerini yazdıralım:
-            if(employeesInformation[loop][2].equals(usernameTextField.getText()) && employeesInformation[loop][3].equals(passwordTextField.getText())){
-                fullName=employeesInformation[loop][0]+" "+" "+employeesInformation[loop][1];
+            if(employeesInformation[loop][2].equals(usernameTextField.getText()) && employeesInformation[loop][4].equals(passwordTextField.getText())){
                 firstName = employeesInformation[loop][0];
                 lastName = employeesInformation[loop][1];
-                eMail = employeesInformation[loop][2];
-                password = employeesInformation[loop][3];
-                identityNumber = employeesInformation[loop][4];
+                eMail = employeesInformation[loop][3];
+                identityNumber = employeesInformation[loop][2];
+                password = employeesInformation[loop][4];
                 employeeView();
                 Stage stage = (Stage) cancelButton.getScene().getWindow();
                 stage.close();
@@ -158,13 +95,12 @@ public class LoginController implements Initializable {
         for (int i = 0; i < adminInformation.length; i++) {
             // Her bir çalışanın bilgilerini işleyin
             // Örneğin, çalışan bilgilerini yazdıralım:
-            if(adminInformation[loop][2].equals(usernameTextField.getText()) && adminInformation[loop][3].equals(passwordTextField.getText())){
-                fullName=adminInformation[loop][0]+" "+" "+adminInformation[loop][1];
+            if(adminInformation[loop][3].equals(usernameTextField.getText()) && adminInformation[loop][4].equals(passwordTextField.getText())){
                 firstName = adminInformation[loop][0];
                 lastName = adminInformation[loop][1];
                 eMail = adminInformation[loop][2];
-                password = adminInformation[loop][3];
-                identityNumber = adminInformation[loop][4];
+                identityNumber = adminInformation[loop][3];
+                password = adminInformation[loop][4];
                 adminView();
                 Stage stage = (Stage) cancelButton.getScene().getWindow();
                 stage.close();
@@ -183,14 +119,11 @@ public class LoginController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("EmployeeView.fxml"));
             Parent root = loader.load();
             EmployeeController controller = loader.getController();
-            controller.setFullName(fullName);
             controller.setFirstName(firstName);
             controller.setLastName(lastName);
             controller.setIdentityNumber(identityNumber);
             controller.setPassword(password);
             controller.setEmail(eMail);
-
-
             Stage employeeViewStage = new Stage();
             employeeViewStage.initStyle(StageStyle.UNDECORATED);
             //primaryStage.setTitle("EknBank App");
@@ -210,16 +143,14 @@ public class LoginController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("AdminView.fxml"));
             Parent root = loader.load();
             AdminController controller = loader.getController();
-            controller.setFullName(fullName);
-         /*   controller.setIdentityNumber(identityNumber);
+            controller.setFirstName(firstName);
+            controller.setLastName(lastName);
+            controller.setIdentityNumber(identityNumber);
             controller.setPassword(password);
-            controller.serEmail(eMail);*/
-
-
+            controller.setEmail(eMail);
 
             Stage adminViewStage = new Stage();
             adminViewStage.initStyle(StageStyle.UNDECORATED);
-            //primaryStage.setTitle("EknBank App");
             adminViewStage.setScene(new Scene(root,800,500));
             adminViewStage.show();
         }catch (Exception e){
@@ -269,7 +200,6 @@ public class LoginController implements Initializable {
             loop++;
         }
 
-
         String[][] adminInformation = new String[loop][5];
         loop = 0;
         int loopForValue =0;
@@ -286,10 +216,5 @@ public class LoginController implements Initializable {
         }
         bReader.close();
         return adminInformation;
-    }
-
-
-    public int loop() {
-        return loop;
     }
 }

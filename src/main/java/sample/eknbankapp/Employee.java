@@ -1,10 +1,10 @@
 package sample.eknbankapp;
 
-public class Customer {
+public class Employee {
 
     String firstName,lastName,identityNumber,mail,password;
 
-    public Customer(String firstName, String lastName, String identityNumber, String mail, String password) {
+    public Employee(String firstName, String lastName, String identityNumber, String mail, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.identityNumber = identityNumber;
@@ -53,7 +53,10 @@ public class Customer {
         this.password = password;
     }
 
-/*
-    @FXML
-    ObservableList<Customer> list = FXCollections.observableArrayList();*/
+    private String identityNumber2() {
+        EmployeeController employeeController = new EmployeeController();
+        String iden = employeeController.identityNumber;
+        return iden;
+    }
+
 }

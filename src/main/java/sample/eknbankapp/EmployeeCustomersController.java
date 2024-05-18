@@ -4,19 +4,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.awt.*;
 import java.io.BufferedReader;
@@ -28,10 +23,8 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class CustomerSettingController implements Initializable {
-
+public class EmployeeCustomersController implements Initializable {
     public int loop = 0;
-
     @FXML
     private TableView<Customer> customerTableView;
 
@@ -49,7 +42,24 @@ public class CustomerSettingController implements Initializable {
 
     @FXML
     private TableColumn<Customer, String> customerPasswordColumn;
+    @FXML
+    private ImageView logoImageView;
+    public void initialize(URL location, ResourceBundle resources) {
+        File logoImageFile = new File("Image/logoImage.jpg");
+        Image logoImage = new Image(logoImageFile.toURI().toString());
+        logoImageView.setImage(logoImage);
 
+        customerFirsNameColumn.setCellValueFactory(new PropertyValueFactory<Customer,String>("firstName"));
+        customerLastNameColumn.setCellValueFactory(new PropertyValueFactory<Customer,String>("lastName"));
+        customerIdentityNumberColumn.setCellValueFactory(new PropertyValueFactory<Customer,String>("identityNumber"));
+        customerEmailColumn.setCellValueFactory(new PropertyValueFactory<Customer,String>("mail"));
+        customerPasswordColumn.setCellValueFactory(new PropertyValueFactory<Customer,String>("password"));
+        try {
+            listCustomer();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
     public String[][] getCustomers () throws IOException {
         File file = new File("TextFolders/Customers.txt");
         FileReader fReader = new FileReader(file);
@@ -98,71 +108,11 @@ public class CustomerSettingController implements Initializable {
         }
         customerTableView.setItems(list);
     }
-    @FXML
-    private ImageView logoImageView;
-    public void initialize(URL location, ResourceBundle resources) {
-        File logoImageFile = new File("Image/logoImage.jpg");
-        Image logoImage = new Image(logoImageFile.toURI().toString());
-        logoImageView.setImage(logoImage);
 
-        customerFirsNameColumn.setCellValueFactory(new PropertyValueFactory<Customer,String>("firstName"));
-        customerLastNameColumn.setCellValueFactory(new PropertyValueFactory<Customer,String>("lastName"));
-        customerIdentityNumberColumn.setCellValueFactory(new PropertyValueFactory<Customer,String>("identityNumber"));
-        customerEmailColumn.setCellValueFactory(new PropertyValueFactory<Customer,String>("mail"));
-        customerPasswordColumn.setCellValueFactory(new PropertyValueFactory<Customer,String>("password"));
-        try {
-            listCustomer();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
     @FXML
     private Button exitButton;
-
     public void exitButtonOnAction(ActionEvent event) throws IOException {
         Stage stage = (Stage) exitButton.getScene().getWindow();
-        stage.close();
-    }
-
-    public void settingForCustomerView(){
-        try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("SettingForCustomerView.fxml"));
-            Parent root = loader.load();
-            Stage settingForCustomerViewStage = new Stage();
-            settingForCustomerViewStage.initStyle(StageStyle.UNDECORATED);
-            settingForCustomerViewStage.setScene(new Scene(root,800,500));
-            settingForCustomerViewStage.show();
-        }catch (Exception e){
-            e.printStackTrace();
-            e.getCause();
-        }
-    }
-    @FXML
-    private Button settingForCustomerButton;
-    public void settingForCustomerButtonOnAction(ActionEvent event) throws IOException {
-        settingForCustomerView();
-        Stage stage = (Stage) settingForCustomerButton.getScene().getWindow();
-        stage.close();
-    }
-
-    public void signUpCustomerView(){
-        try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("CreateCustomerView.fxml"));
-            Parent root = loader.load();
-            Stage settingForCustomerViewStage = new Stage();
-            settingForCustomerViewStage.initStyle(StageStyle.UNDECORATED);
-            settingForCustomerViewStage.setScene(new Scene(root,800,500));
-            settingForCustomerViewStage.show();
-        }catch (Exception e){
-            e.printStackTrace();
-            e.getCause();
-        }
-    }
-    @FXML
-    private Button signUpCustomerButton;
-    public void signUpCustomerButtonOnAction(ActionEvent event) throws IOException {
-        signUpCustomerView();
-        Stage stage = (Stage) signUpCustomerButton.getScene().getWindow();
         stage.close();
     }
 
@@ -176,19 +126,9 @@ public class CustomerSettingController implements Initializable {
     @FXML
     private Button financialSituationButton;
     public void financialSituationButtonOnAction(ActionEvent event) throws IOException {
-        AdminController adminController = new AdminController();
-        adminController.financialSituationView();
+        EmployeeController employeeController = new EmployeeController();
+        employeeController.financialSituationView();
         Stage stage = (Stage) financialSituationButton.getScene().getWindow();
         stage.close();
     }
-
-    @FXML
-    private Button employeeSettingButton;
-    public void employeeSettingButtonOnAction(ActionEvent event) throws IOException {
-        AdminController adminController = new AdminController();
-        adminController.employeeSettingView();
-        Stage stage = (Stage) employeeSettingButton.getScene().getWindow();
-        stage.close();
-    }
-
 }

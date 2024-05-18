@@ -1,5 +1,4 @@
-NAME SURNAME E-MAIL PASSWORD IdentityNumber
-EKIN GUN E@E 12 4
-E E E E 4
-R R R R R
-C C C C C
+FirstName LastName IdentityNumber E-Mail Password 
+Ekin Gün 2019510500 employee@ekin.gun 123 
+Hamur Yakışıklı 2019510501 employee@google.com 123 
+Akın Canıcıkan 2019510789 akın@canıcıkan.com 456789 

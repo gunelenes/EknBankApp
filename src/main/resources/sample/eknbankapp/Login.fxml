@@ -17,7 +17,7 @@
              <ImageView fx:id="loginImageView" fitHeight="407.0" fitWidth="228.0" layoutX="2.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                  <Image url="@../../../../../Image/eknBankLoginImage.jpg" />
              </ImageView>
-            <Label layoutX="50.0" layoutY="315.0" text="e:support@eknBank.com" />
+            <Label layoutX="50.0" layoutY="315.0" text="e: support@eknBank.com" />
             <Label layoutX="50.0" layoutY="334.0" text="w:eknbank.com" />
             <Label layoutX="50.0" layoutY="333.0" text="w">
                <font>

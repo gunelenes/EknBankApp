@@ -8,12 +8,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -27,8 +24,6 @@ import java.util.ResourceBundle;
 public class EmployeeController implements Initializable {
 
     public int loop = 0;
-    @FXML
-    private Label employeeNameLabel;
     @FXML
     private TextField employeeFirstnameTextField;
     @FXML
@@ -54,9 +49,6 @@ public class EmployeeController implements Initializable {
     }
     public void setLastName(String lastName) {
         employeeLastnameTextField.setText(lastName);
-    }
-    public void setFullName(String fullName) {
-        employeeNameLabel.setText(fullName);
     }
 
     @FXML
@@ -89,33 +81,55 @@ public class EmployeeController implements Initializable {
     }
     @FXML
     private Label registerMessageLabel;
+    @FXML
+    private Label errorMessageLabel;
+    @FXML
     private Button employeeInformationRegisterButton;
     public void employeeInformationRegisterButtonOnAction(ActionEvent event) throws IOException {
+        registerMessageLabel.setText("");
+        errorMessageLabel.setText("");
+        if(employeeFirstnameTextField.getText().equals("")||employeeLastnameTextField.getText().equals("")
+                ||employeeEmailTextField.getText().equals("")
+                ||employeeIdentityNumberTextField.getText().equals("")
+                ||employeePasswordTextField.getText().equals("")){
+            errorMessageLabel.setText("Incorrect Input !!!");
+        }else {
         //login controller'a bağlanıp employeeların hepsini employeesInformation arrayine atar
         LoginController loginController = new LoginController();
-        String[][] employeesInformation = new String[totalEmployee()][5];
-        employeesInformation=loginController.getEmployees();
+        String[][] employeesInformation=loginController.getEmployees();
 
         loop = 0;
         //arraydeki tüm verileri işler ve doğru kişiyi bulup bilgilerini günceller
         for (int i = 0; i < employeesInformation.length; i++) {
             // Her bir çalışanın bilgilerini işleyin
             // Örneğin, çalışan bilgilerini yazdıralım:
-            if(employeesInformation[loop][4].equals(employeeIdentityNumberTextField.getText())){
+            if(employeesInformation[loop][2].equals(employeeIdentityNumberTextField.getText())){
                  firstName = employeeFirstnameTextField.getText();
                  lastName = employeeLastnameTextField.getText();
                  password = employeePasswordTextField.getText();
                  eMail = employeeEmailTextField.getText();
                 employeesInformation[loop][0]=firstName;
                 employeesInformation[loop][1]=lastName;
-                employeesInformation[loop][2]=eMail;
-                employeesInformation[loop][3]=password;
+                employeesInformation[loop][3]=eMail;
+                employeesInformation[loop][4]=password;
                 registerMessageLabel.setText("Correct register");
                 employeeView();
             }
             loop++;
-        }
-    }
+        } try {
+                FileWriter writer = new FileWriter("TextFolders/Employees.txt");
+                for (int y = 0; y < employeesInformation.length; y++) {
+                    for (int j = 0; j < employeesInformation[y].length; j++) {
+                        writer.write(employeesInformation[y][j] + " ");
+                    }
+                    writer.write("\n");
+                }
+                writer.close();
+                //System.out.println("Veriler " + TextFolders/deneme.txt"+ " dosyasına yazıldı.");
+            } catch (IOException e) {
+                System.out.println("File Write Error EmployeeController Method: employeeInformationRegisterButtonOnAction: " + e.getMessage());
+            }
+        }}
 
 
     // TÜM bilgileri ile o an aktif olan kullanıcının verilerini ekrana yazdırır
@@ -134,7 +148,6 @@ public class EmployeeController implements Initializable {
             controller.setIdentityNumber(identityNumber);
             controller.setPassword(password);
             controller.setEmail(eMail);
-            setFullName(firstName+" "+lastName);
             Stage employeeViewStage = new Stage();
             employeeViewStage.initStyle(StageStyle.UNDECORATED);
             //primaryStage.setTitle("EknBank App");
@@ -153,20 +166,52 @@ public class EmployeeController implements Initializable {
     public void cryptoButtonOnAction(ActionEvent event) throws IOException, URISyntaxException {
         Desktop.getDesktop().browse(new URI("http://localhost:63342/EknBankApp/src/main/Selenium/CryptoBord.html?_ijt=rf3lt2bfk4modh3k5vss587pl"));
     }
-   /* public void cryptoButtonOnAction(ActionEvent event) throws IOException {
-        cryptoView();
-        Stage stage = (Stage) exitButton.getScene().getWindow();
-        stage.close();
-    }*/
 
-    public void cryptoView() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("CryptoView.fxml"));
-        Stage cryptoViewStage = new Stage();
-        cryptoViewStage.initStyle(StageStyle.UNDECORATED);
-        //primaryStage.setTitle("EknBank App");
-        cryptoViewStage.setScene(new Scene(root,800,500));
-        cryptoViewStage.show();
+
+
+    public void financialSituationView(){
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("EmployeeFinancialSituationView.fxml"));
+            Parent root = loader.load();
+            Stage financialSituationView = new Stage();
+            financialSituationView.initStyle(StageStyle.UNDECORATED);
+            financialSituationView.setScene(new Scene(root,800,500));
+            financialSituationView.show();
+        }catch (Exception e){
+            e.printStackTrace();
+            e.getCause();
+        }
+    }
+
+    @FXML
+    private Button employeeViewFinancialSituationButton;
+    public void financialSituationButtonOnAction(ActionEvent event) throws IOException {
+        financialSituationView();
+        Stage stage = (Stage) employeeViewFinancialSituationButton.getScene().getWindow();
+        stage.close();
     }
 
 
+
+    public void employeeCustomersView(){
+        try{
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("EmployeeCustomersView.fxml"));
+            Parent root = loader.load();
+            Stage employeeCustomersView = new Stage();
+            employeeCustomersView.initStyle(StageStyle.UNDECORATED);
+            employeeCustomersView.setScene(new Scene(root,800,500));
+            employeeCustomersView.show();
+        }catch (Exception e){
+            e.printStackTrace();
+            e.getCause();
+        }
+    }
+
+    @FXML
+    private Button employeeCustomersButton;
+    public void employeeCustomersViewButtonOnAction(ActionEvent event) throws IOException {
+        employeeCustomersView();
+        Stage stage = (Stage) employeeCustomersButton.getScene().getWindow();
+        stage.close();
+    }
 }
